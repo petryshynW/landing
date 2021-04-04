@@ -29,7 +29,7 @@
 
     @if(session('status'))
         <div class="alert-danger alert-danger">
-            {{sesion('status')}}
+            {{session('status')}}
         </div>
     @endif
 </header>

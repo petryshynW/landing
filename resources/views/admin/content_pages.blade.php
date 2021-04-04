@@ -19,10 +19,16 @@
             <td>{{$page->alias}}</td>
             <td>{{$page->text}}</td>
             <td>{{$page->created_at}}</td>
-            <td>{{$page->id}}</td>
+            <td>
+                <form action="{{route('pagesEdit',['page'=>$page->id])}}" class="form-horizontal" method="post">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="submit" value="Видалити" class="btn btn-danger">
+                </form>
+            </td>
         </tr>
     @endforeach
     </tbody>
 </table>
 @endif
+    <a href="{{route('pageAdd')}}" >Додати нову сторінку</a>
 </div>

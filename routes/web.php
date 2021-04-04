@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PageController;
 use  App\Http\Controllers\PagesController;
+use  App\Http\Controllers\PageAddController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     //PAGES
     Route::group(['prefix'=>'pages'],function(){
         Route::get('/',[PagesController::class,'execute'])->name('pages');
-        Route::match(['get','post'],'/add',['uses'=>'PagesAddController@execute','as'=>'pagesAdd']);
+        Route::match(['get','post'],'/add',[PageAddController::class,'execute'])->name('pageAdd');
         Route::match(['get','post','delete'],'/edit/{page}',['uses'=>'PagesEditController@execute','as'=>'pagesEdit']);
 
     });
