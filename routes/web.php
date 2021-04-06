@@ -32,7 +32,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
             return view('admin.index',$data);
         }
         return view();
-    });
+    })->name('admin');
 
     //PAGES
     Route::group(['prefix'=>'pages'],function(){

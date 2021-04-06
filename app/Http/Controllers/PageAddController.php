@@ -29,10 +29,11 @@ class PageAddController extends Controller
             }
             if ($request->hasFile('images')) {
                 $file = $request->file('images');
-                $input['images'] = $file->getClientOriginalName();//не збірігає куда треба
-                $file->store('\public\images');
-                //dd(public_path('images'));
-            }
+                $input['images'] = $file->getClientOriginalName();
+               // dd(public_path('\assets\img'));
+                $file->move(public_path('assets\img'),$input['images']);
+                //$file->storePubliclyAs(public_path('\assets\img'),$input['images'],'pub');
+               }
             $page = new Page();
             $page->fill($input);
             if ($page->save())

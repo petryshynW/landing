@@ -24,7 +24,7 @@
             <label for="old_image" class="col-xs-2 control-label">Картинка:</label>
             <div class="col-xs-offset-2 col-xs-10">
                 <img src="{{asset('assets/img/'.$data['images'])}}" class="img-rounded">
-                <input type="hidden" name="old_images" value="{{$data['images']}}">
+                <input type="hidden" name="old_image" value="{{$data['images']}}">
             </div>
         </div>
         <div class="form-group">
@@ -41,8 +41,10 @@
     </form>
     <script>
         CKEDITOR.replace('editor');
-        $('form').on('submit',function (){
+        CKEDITOR.instances.editor.setData(document.getElementById('editor').value) ;
+       $('form').on('submit',function (){
             document.getElementById('editor').value = CKEDITOR.instances.editor.getData();
+
         })
 
 

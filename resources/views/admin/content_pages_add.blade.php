@@ -33,6 +33,7 @@
      </form>
     <script>
         CKEDITOR.replace('editor');
+        CKEDITOR.instances.editor.setData(document.getElementById('editor').value) ;
         $('form').on('submit',function (){
             document.getElementById('editor').value = CKEDITOR.instances.editor.getData();
         })

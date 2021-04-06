@@ -15,13 +15,15 @@
     @foreach($pages as $k=>$page)
         <tr>
             <td>{{$page->id}}</td>
-            <td><a href="{{route('pagesEdit',['page'=>$page->id])}}" alt="{{$page->name}}">{{$page->name}}</a> </td>
+            <td><a href="{{route('pageEdit',['page'=>$page->id])}}" alt="{{$page->name}}">{{$page->name}}</a> </td>
             <td>{{$page->alias}}</td>
             <td>{{$page->text}}</td>
             <td>{{$page->created_at}}</td>
             <td>
-                <form action="{{route('pagesEdit',['page'=>$page->id])}}" class="form-horizontal" method="post">
-                    <input type="hidden" name="action" value="delete">
+                <form action="{{route('pageEdit',['page'=>$page->id])}}" class="form-horizontal" method="post">
+                    <!--<input type="hidden" name="_METHOD" value="delete">-->
+                    @csrf
+                    {{method_field('delete')}}
                     <input type="submit" value="Видалити" class="btn btn-danger">
                 </form>
             </td>
